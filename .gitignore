@@ -92,3 +92,4 @@
 /target/classes/com/xiaodong/verification/model/*.class
 /target/classes/com/xiaodong/verification/service/*.class
 /target/classes/*.properties
+/target
