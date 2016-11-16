@@ -22,6 +22,18 @@ public class SoeasyController {
 
     private static final String PATH = "/Users/lixiaodong/Pictures/";
 
+    @RequestMapping("collect.do")
+    @ResponseBody
+    public String collect(String name, String idCard) {
+        LOG.info("参数name={},idCard={}", name, idCard);
+        try {
+            Thread.sleep(60000L);
+        } catch (InterruptedException e) {
+            LOG.error("", e);
+        }
+        return "{\"success\":true,\"data\":{\"type\":\"CONTROL\",\"content\":\"开始采集行为数据\",\"process_code\":10008,\"finish\":true}}";
+    }
+
     @RequestMapping("face.do")
     @ResponseBody
     public String face(String api_key, String api_secret, String comparison_type,
