@@ -22,10 +22,22 @@ public class SoeasyController {
 
     private static final String PATH = "/Users/lixiaodong/Pictures/";
 
+    @RequestMapping("limit.do")
+    @ResponseBody
+    public String limit(String idCard, String mobileCollectTime, String jingdongCollectTime) {
+        LOG.info("参数idCard={},mobileCollectTime={},jingdongCollectTime={}",idCard,mobileCollectTime,jingdongCollectTime);
+        return "{\"data\":{\"mobile\":true,\"jingdong\":true},\"code\":0,\"message\":\"\"}";
+    }
+
+    @RequestMapping("receipt.do")
+    @ResponseBody
+    public String receipt() {
+        return "{\"success\":true,\"message\":\"生成token成功\",\"data\":{\"token\":\"4666e064864744c89f5c982222e0a5fc\",\"cell_phone_num\":\"13717706442\",\"datasource\":{\"id\":\"ce197d36b9734a65aaf6277aaf331ad7\",\"website\":\"chinamobilebj\",\"name\":\"北京移动\",\"category\":\"mobile\",\"category_name\":\"移动运营商\",\"create_time\":{\"year\":2014,\"month\":6,\"dayOfMonth\":7,\"hourOfDay\":10,\"minute\":49,\"second\":14},\"update_time\":{\"year\":2016,\"month\":5,\"dayOfMonth\":18,\"hourOfDay\":4,\"minute\":6,\"second\":10},\"offline_times\":0,\"status\":1,\"website_code\":16,\"reset_pwd_method\":0,\"sms_required\":2,\"required_captcha_user_identified\":0}},\"code\":65557}";
+    }
+
     @RequestMapping("collect.do")
     @ResponseBody
-    public String collect(String name, String idCard) {
-        LOG.info("参数name={},idCard={}", name, idCard);
+    public String collect() {
         try {
             Thread.sleep(60000L);
         } catch (InterruptedException e) {
