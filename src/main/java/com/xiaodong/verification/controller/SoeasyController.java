@@ -1,5 +1,7 @@
 package com.xiaodong.verification.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -21,6 +23,24 @@ public class SoeasyController {
     private static final Logger LOG = LoggerFactory.getLogger(SoeasyController.class);
 
     private static final String PATH = "/Users/lixiaodong/Pictures/";
+
+    @RequestMapping("tid.do")
+    @ResponseBody
+    public String tid(String requestData) {
+        LOG.info("requestData={}", requestData);
+        JSONObject dataJson = JSON.parseObject(requestData);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("status", "0");
+        jsonObject.put("message", "查询成功");
+        if ("query".equals(dataJson.getJSONObject("data").getString("action"))) {
+            JSONObject data = new JSONObject();
+            data.put("tid", "7824C8D5FBBE4CD396E0486074916323");
+            jsonObject.put("data", data);
+        } else {
+            jsonObject.put("status", "20012");
+        }
+        return jsonObject.toJSONString();
+    }
 
     @RequestMapping("limit.do")
     @ResponseBody
